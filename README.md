@@ -64,7 +64,7 @@ Lưu ý: Không code theo các phần của note.
 ![img_10.png](img_10.png)
 #### Bước 5: Chạy thử kết quả
 ![img_11.png](img_11.png)
-Và 1 số file được tạo ra khi chạy:
+#### Các file tạo ra sau khi chạy
 - log.html: Lưu lại các thông tin về các bước thực hiện của test.
 ![img_12.png](img_12.png)
 - output.xml: Lưu lại các thông tin về các bước thực hiện của test.
@@ -82,7 +82,7 @@ Và 1 số file được tạo ra khi chạy:
 ![img_16.png](img_16.png)
 #### Bước 5: Chạy thử kết quả
 ![img_17.png](img_17.png)
-Và 1 số file được tạo ra khi chạy:
+#### Các file tạo ra sau khi chạy
 - log.html: Lưu lại các thông tin về các bước thực hiện của test.
 ![img_18.png](img_18.png)
 - output.xml: Lưu lại các thông tin về các bước thực hiện của test.
