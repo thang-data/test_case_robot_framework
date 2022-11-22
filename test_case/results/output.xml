@@ -1,0 +1,1510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.11.0 on darwin)" generated="20221122 14:28:05.601" rpa="false" schemaversion="3">
+<suite id="s1" name="Todo" source="/Users/s19667/Documents/pythonProjec/Test_Robot/test_case/todo.robot">
+<test id="s1-t1" name="Empty list can have item added" line="12">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:28:05.674" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:28:05.673" endtime="20221122 14:28:12.599"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:28:12.599" endtime="20221122 14:28:16.738"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:05.673" endtime="20221122 14:28:16.739"/>
+</kw>
+<kw name="GIVEN An empty Todo list">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:16.739" endtime="20221122 14:28:16.943"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//section[@class='main']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:28:16.943" endtime="20221122 14:28:16.952"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:16.739" endtime="20221122 14:28:16.952"/>
+</kw>
+<kw name="WHEN I add a todo for">
+<arg>Buy cheese</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:28:16.952" endtime="20221122 14:28:16.982"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:16.983" level="INFO">Typing text 'Buy cheese' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:28:16.983" endtime="20221122 14:28:17.294"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:28:17.295" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:28:17.718" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:28:17.718" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:28:17.294" endtime="20221122 14:28:18.061"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:16.952" endtime="20221122 14:28:18.061"/>
+</kw>
+<kw name="THEN Only that item is listed">
+<arg>Buy cheese</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[text()='${todo_item}']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:18.061" endtime="20221122 14:28:18.134"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.061" endtime="20221122 14:28:18.134"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>1 item left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:18.134" endtime="20221122 14:28:18.159"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.134" endtime="20221122 14:28:18.159"/>
+</kw>
+<kw name="AND The filter is set to">
+<arg>All</arg>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:18.159" level="INFO">Clicking link '//ul[@class='filters']/li/a [text()='All']'.</msg>
+<status status="PASS" starttime="20221122 14:28:18.159" endtime="20221122 14:28:18.317"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, 'selected')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:18.317" endtime="20221122 14:28:18.331"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.159" endtime="20221122 14:28:18.331"/>
+</kw>
+<kw name="AND The filter is unset to">
+<arg>Completed</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:18.332" endtime="20221122 14:28:18.339"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.331" endtime="20221122 14:28:18.339"/>
+</kw>
+<kw name="AND The filter is unset to">
+<arg>Active</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:18.339" endtime="20221122 14:28:18.345"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.339" endtime="20221122 14:28:18.345"/>
+</kw>
+<kw name="AND Clear completed is unavailable">
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//button[text()='Clear completed']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:28:18.346" endtime="20221122 14:28:18.351"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.345" endtime="20221122 14:28:18.352"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:28:18.352" endtime="20221122 14:28:18.440"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:05.673" endtime="20221122 14:28:18.440"/>
+</test>
+<test id="s1-t2" name="Empty list can have two items added" line="22">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:28:18.440" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:28:18.440" endtime="20221122 14:28:25.797"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:28:25.797" endtime="20221122 14:28:28.658"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.440" endtime="20221122 14:28:28.658"/>
+</kw>
+<kw name="GIVEN an empty Todo list">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:28.658" endtime="20221122 14:28:28.868"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//section[@class='main']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:28:28.868" endtime="20221122 14:28:28.876"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:28.658" endtime="20221122 14:28:28.876"/>
+</kw>
+<kw name="WHEN I add a todo for">
+<arg>Buy cheese</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:28:28.876" endtime="20221122 14:28:28.904"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:28.904" level="INFO">Typing text 'Buy cheese' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:28:28.904" endtime="20221122 14:28:29.236"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:28:29.237" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:28:29.566" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:28:29.566" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:28:29.236" endtime="20221122 14:28:29.913"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:28.876" endtime="20221122 14:28:29.913"/>
+</kw>
+<kw name="AND I add a todo for">
+<arg>Wash the car</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:28:29.913" endtime="20221122 14:28:29.978"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:29.978" level="INFO">Typing text 'Wash the car' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:28:29.978" endtime="20221122 14:28:30.051"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:28:30.051" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:28:30.316" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:28:30.316" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:28:30.051" endtime="20221122 14:28:30.364"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:29.913" endtime="20221122 14:28:30.364"/>
+</kw>
+<kw name="THEN Only that item is listed">
+<arg>Buy cheese</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[text()='${todo_item}']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:30.364" endtime="20221122 14:28:30.387"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.364" endtime="20221122 14:28:30.387"/>
+</kw>
+<kw name="AND Only that item is listed">
+<arg>Wash the car</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[text()='${todo_item}']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:30.387" endtime="20221122 14:28:30.403"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.387" endtime="20221122 14:28:30.403"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>2 items left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:30.403" endtime="20221122 14:28:30.427"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.403" endtime="20221122 14:28:30.427"/>
+</kw>
+<kw name="AND The filter is set to">
+<arg>All</arg>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:30.427" level="INFO">Clicking link '//ul[@class='filters']/li/a [text()='All']'.</msg>
+<status status="PASS" starttime="20221122 14:28:30.427" endtime="20221122 14:28:30.530"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, 'selected')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:30.530" endtime="20221122 14:28:30.541"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.427" endtime="20221122 14:28:30.541"/>
+</kw>
+<kw name="AND The filter is unset to">
+<arg>Completed</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:30.542" endtime="20221122 14:28:30.549"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.541" endtime="20221122 14:28:30.549"/>
+</kw>
+<kw name="AND The filter is unset to">
+<arg>Active</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:30.549" endtime="20221122 14:28:30.556"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.549" endtime="20221122 14:28:30.556"/>
+</kw>
+<kw name="AND Clear completed is unavailable">
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//button[text()='Clear completed']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:28:30.556" endtime="20221122 14:28:30.562"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.556" endtime="20221122 14:28:30.562"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:28:30.562" endtime="20221122 14:28:30.648"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:18.440" endtime="20221122 14:28:30.648"/>
+</test>
+<test id="s1-t3" name="Item completion changes the list" line="34">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:28:30.649" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:28:30.649" endtime="20221122 14:28:37.953"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:28:37.953" endtime="20221122 14:28:40.668"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.649" endtime="20221122 14:28:40.669"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:28:40.669" endtime="20221122 14:28:40.884"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:40.885" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:28:40.884" endtime="20221122 14:28:41.207"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:28:41.207" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:28:41.555" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:28:41.555" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:28:41.207" endtime="20221122 14:28:41.899"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:40.669" endtime="20221122 14:28:41.899"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:28:41.899" endtime="20221122 14:28:41.952"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:41.953" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:28:41.953" endtime="20221122 14:28:42.023"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:28:42.024" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:28:42.285" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:28:42.285" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:28:42.023" endtime="20221122 14:28:42.329"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:41.899" endtime="20221122 14:28:42.329"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:40.669" endtime="20221122 14:28:42.329"/>
+</kw>
+<kw name="WHEN The item is marked as complete">
+<arg>File taxes</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:42.330" level="INFO">Clicking button '//label[text()='File taxes']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:28:42.329" endtime="20221122 14:28:42.851"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:42.851" endtime="20221122 14:28:42.892"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:42.329" endtime="20221122 14:28:42.892"/>
+</kw>
+<kw name="THEN The item is listed as active">
+<arg>Walk the dog</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:42.892" endtime="20221122 14:28:42.900"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:42.892" endtime="20221122 14:28:42.900"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>1 item left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:42.900" endtime="20221122 14:28:42.922"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:42.900" endtime="20221122 14:28:42.922"/>
+</kw>
+<kw name="AND Clear completed is available">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//button[text()='Clear completed']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:42.922" endtime="20221122 14:28:42.937"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:42.922" endtime="20221122 14:28:42.937"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:28:42.937" endtime="20221122 14:28:43.025"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:30.649" endtime="20221122 14:28:43.025"/>
+</test>
+<test id="s1-t4" name="Completed items should not be visible in active filter" line="41">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:28:43.026" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:28:43.026" endtime="20221122 14:28:53.088"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:28:53.088" endtime="20221122 14:28:53.224"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:43.025" endtime="20221122 14:28:53.224"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:28:53.225" endtime="20221122 14:28:53.440"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:53.441" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:28:53.441" endtime="20221122 14:28:53.777"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:28:53.777" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:28:54.122" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:28:54.122" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:28:53.777" endtime="20221122 14:28:54.473"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:53.225" endtime="20221122 14:28:54.473"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:28:54.473" endtime="20221122 14:28:54.529"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:54.530" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:28:54.530" endtime="20221122 14:28:54.600"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:28:54.600" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:28:54.869" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:28:54.869" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:28:54.600" endtime="20221122 14:28:54.918"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:54.473" endtime="20221122 14:28:54.918"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:53.225" endtime="20221122 14:28:54.918"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>File taxes</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:54.918" level="INFO">Clicking button '//label[text()='File taxes']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:28:54.918" endtime="20221122 14:28:55.478"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:55.478" endtime="20221122 14:28:55.532"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:54.918" endtime="20221122 14:28:55.532"/>
+</kw>
+<kw name="WHEN The filter is set to">
+<arg>Active</arg>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20221122 14:28:55.532" level="INFO">Clicking link '//ul[@class='filters']/li/a [text()='Active']'.</msg>
+<status status="PASS" starttime="20221122 14:28:55.532" endtime="20221122 14:28:55.793"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, 'selected')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:55.793" endtime="20221122 14:28:55.809"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:55.532" endtime="20221122 14:28:55.809"/>
+</kw>
+<kw name="THEN The item is listed as active">
+<arg>Walk the dog</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:28:55.809" endtime="20221122 14:28:55.816"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:55.809" endtime="20221122 14:28:55.816"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>1 item left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:55.816" endtime="20221122 14:28:55.838"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:55.816" endtime="20221122 14:28:55.838"/>
+</kw>
+<kw name="AND Clear completed is available">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//button[text()='Clear completed']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:28:55.838" endtime="20221122 14:28:55.852"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:55.838" endtime="20221122 14:28:55.852"/>
+</kw>
+<kw name="And The route is">
+<arg>/active</arg>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<arg>${route}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<msg timestamp="20221122 14:28:55.855" level="INFO">Current location contains '/active'.</msg>
+<status status="PASS" starttime="20221122 14:28:55.852" endtime="20221122 14:28:55.855"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:55.852" endtime="20221122 14:28:55.855"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:28:55.855" endtime="20221122 14:28:56.939"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:43.025" endtime="20221122 14:28:56.939"/>
+</test>
+<test id="s1-t5" name="All completed items should not be visible in active filter" line="50">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:28:56.940" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:28:56.939" endtime="20221122 14:29:07.160"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:29:07.160" endtime="20221122 14:29:07.315"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:56.939" endtime="20221122 14:29:07.315"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:07.316" endtime="20221122 14:29:07.543"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:07.544" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:07.543" endtime="20221122 14:29:07.879"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:07.880" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:08.230" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:08.230" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:07.880" endtime="20221122 14:29:08.587"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:07.316" endtime="20221122 14:29:08.587"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:08.587" endtime="20221122 14:29:08.644"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:08.644" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:08.644" endtime="20221122 14:29:08.717"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:08.717" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:08.982" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:08.982" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:08.717" endtime="20221122 14:29:09.035"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:08.587" endtime="20221122 14:29:09.035"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:07.315" endtime="20221122 14:29:09.035"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>File taxes</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:09.036" level="INFO">Clicking button '//label[text()='File taxes']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:29:09.035" endtime="20221122 14:29:09.587"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:09.587" endtime="20221122 14:29:09.649"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:09.035" endtime="20221122 14:29:09.649"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>Walk the dog</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:09.650" level="INFO">Clicking button '//label[text()='Walk the dog']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:29:09.650" endtime="20221122 14:29:09.690"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:09.690" endtime="20221122 14:29:09.700"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:09.650" endtime="20221122 14:29:09.700"/>
+</kw>
+<kw name="WHEN The filter is set to">
+<arg>Active</arg>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:09.701" level="INFO">Clicking link '//ul[@class='filters']/li/a [text()='Active']'.</msg>
+<status status="PASS" starttime="20221122 14:29:09.701" endtime="20221122 14:29:09.939"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, 'selected')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:09.939" endtime="20221122 14:29:09.957"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:09.700" endtime="20221122 14:29:09.957"/>
+</kw>
+<kw name="THEN Nothing is listed">
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//ul[@class='todo-list']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:29:09.957" endtime="20221122 14:29:10.033"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:09.957" endtime="20221122 14:29:10.033"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>0 items left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:29:10.033" endtime="20221122 14:29:10.084"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:10.033" endtime="20221122 14:29:10.085"/>
+</kw>
+<kw name="AND Clear completed is available">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//button[text()='Clear completed']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:29:10.085" endtime="20221122 14:29:10.098"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:10.085" endtime="20221122 14:29:10.098"/>
+</kw>
+<kw name="AND The route is">
+<arg>/active</arg>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<arg>${route}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<msg timestamp="20221122 14:29:10.100" level="INFO">Current location contains '/active'.</msg>
+<status status="PASS" starttime="20221122 14:29:10.098" endtime="20221122 14:29:10.100"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:10.098" endtime="20221122 14:29:10.100"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:29:10.101" endtime="20221122 14:29:10.185"/>
+</kw>
+<status status="PASS" starttime="20221122 14:28:56.939" endtime="20221122 14:29:10.185"/>
+</test>
+<test id="s1-t6" name="Uncompleted items should not be visible in the completed filter" line="60">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:29:10.186" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:29:10.186" endtime="20221122 14:29:20.133"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:29:20.133" endtime="20221122 14:29:20.284"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:10.186" endtime="20221122 14:29:20.284"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:20.285" endtime="20221122 14:29:20.501"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:20.501" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:20.501" endtime="20221122 14:29:20.831"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:20.831" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:21.184" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:21.184" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:20.831" endtime="20221122 14:29:21.507"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:20.285" endtime="20221122 14:29:21.507"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:21.507" endtime="20221122 14:29:21.629"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:21.629" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:21.629" endtime="20221122 14:29:21.703"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:21.704" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:22.010" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:22.010" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:21.703" endtime="20221122 14:29:22.063"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:21.507" endtime="20221122 14:29:22.063"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:20.285" endtime="20221122 14:29:22.063"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>File taxes</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:22.064" level="INFO">Clicking button '//label[text()='File taxes']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:29:22.064" endtime="20221122 14:29:22.618"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:22.618" endtime="20221122 14:29:22.655"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.064" endtime="20221122 14:29:22.655"/>
+</kw>
+<kw name="WHEN The filter is set to">
+<arg>Completed</arg>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:22.655" level="INFO">Clicking link '//ul[@class='filters']/li/a [text()='Completed']'.</msg>
+<status status="PASS" starttime="20221122 14:29:22.655" endtime="20221122 14:29:22.839"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${FILTER_ELEMENT} [text()='${filter_name}'][contains(@class, 'selected')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:22.839" endtime="20221122 14:29:22.851"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.655" endtime="20221122 14:29:22.851"/>
+</kw>
+<kw name="THEN The item is listed as completed">
+<arg>File taxes</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:22.851" endtime="20221122 14:29:22.856"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.851" endtime="20221122 14:29:22.856"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>1 item left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:29:22.856" endtime="20221122 14:29:22.884"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.856" endtime="20221122 14:29:22.884"/>
+</kw>
+<kw name="AND Clear completed is available">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//button[text()='Clear completed']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:29:22.884" endtime="20221122 14:29:22.903"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.884" endtime="20221122 14:29:22.903"/>
+</kw>
+<kw name="AND The route is">
+<arg>/completed</arg>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<arg>${route}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<msg timestamp="20221122 14:29:22.907" level="INFO">Current location contains '/completed'.</msg>
+<status status="PASS" starttime="20221122 14:29:22.903" endtime="20221122 14:29:22.907"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.903" endtime="20221122 14:29:22.907"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:29:22.907" endtime="20221122 14:29:22.990"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:10.186" endtime="20221122 14:29:22.990"/>
+</test>
+<test id="s1-t7" name="Items can be cleared" line="69">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:29:22.991" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:29:22.990" endtime="20221122 14:29:33.163"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:29:33.163" endtime="20221122 14:29:33.342"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.990" endtime="20221122 14:29:33.343"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:33.343" endtime="20221122 14:29:33.571"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:33.571" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:33.571" endtime="20221122 14:29:33.891"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:33.891" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:34.240" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:34.240" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:33.891" endtime="20221122 14:29:34.598"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:33.343" endtime="20221122 14:29:34.598"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:34.599" endtime="20221122 14:29:34.655"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:34.655" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:34.655" endtime="20221122 14:29:34.727"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:34.728" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:34.996" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:34.996" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:34.727" endtime="20221122 14:29:35.042"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:34.598" endtime="20221122 14:29:35.042"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:33.343" endtime="20221122 14:29:35.042"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>File taxes</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:35.042" level="INFO">Clicking button '//label[text()='File taxes']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:29:35.042" endtime="20221122 14:29:35.580"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:35.580" endtime="20221122 14:29:35.619"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:35.042" endtime="20221122 14:29:35.619"/>
+</kw>
+<kw name="WHEN Clear completed is clicked">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[@class='clear-completed']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:35.619" level="INFO">Clicking button '//button[@class='clear-completed']'.</msg>
+<status status="PASS" starttime="20221122 14:29:35.619" endtime="20221122 14:29:35.720"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:35.619" endtime="20221122 14:29:35.720"/>
+</kw>
+<kw name="THEN The item is listed as active">
+<arg>Walk the dog</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:35.721" endtime="20221122 14:29:35.745"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:35.721" endtime="20221122 14:29:35.745"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>1 item left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:29:35.745" endtime="20221122 14:29:35.779"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:35.745" endtime="20221122 14:29:35.780"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:29:35.780" endtime="20221122 14:29:35.867"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:22.990" endtime="20221122 14:29:35.867"/>
+</test>
+<test id="s1-t8" name="Clear all works when none completed" line="76">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:29:35.868" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:29:35.868" endtime="20221122 14:29:43.200"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:29:43.200" endtime="20221122 14:29:45.999"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:35.868" endtime="20221122 14:29:45.999"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:45.999" endtime="20221122 14:29:46.230"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:46.230" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:46.230" endtime="20221122 14:29:46.567"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:46.567" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:46.908" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:46.908" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:46.567" endtime="20221122 14:29:47.272"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:45.999" endtime="20221122 14:29:47.272"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:47.272" endtime="20221122 14:29:47.328"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:47.328" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:47.328" endtime="20221122 14:29:47.403"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:47.403" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:47.671" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:47.671" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:47.403" endtime="20221122 14:29:47.725"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:47.272" endtime="20221122 14:29:47.725"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:45.999" endtime="20221122 14:29:47.725"/>
+</kw>
+<kw name="WHEN The clear all items affordance is toggled">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//input[@id='toggle-all']//following-sibling::label</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:47.726" level="INFO">Clicking element '//input[@id='toggle-all']//following-sibling::label'.</msg>
+<status status="PASS" starttime="20221122 14:29:47.725" endtime="20221122 14:29:48.271"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:47.725" endtime="20221122 14:29:48.271"/>
+</kw>
+<kw name="THEN The item is listed as completed">
+<arg>File taxes</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:48.271" endtime="20221122 14:29:48.323"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:48.271" endtime="20221122 14:29:48.323"/>
+</kw>
+<kw name="AND The item is listed as completed">
+<arg>Walk the dog</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:29:48.324" endtime="20221122 14:29:48.331"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:48.324" endtime="20221122 14:29:48.332"/>
+</kw>
+<kw name="BUT Nothing listed is active">
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//ul[@class='todo-list']/li[@class='']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:29:48.332" endtime="20221122 14:29:48.338"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:48.332" endtime="20221122 14:29:48.338"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>0 items left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:29:48.338" endtime="20221122 14:29:48.359"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:48.338" endtime="20221122 14:29:48.359"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:29:48.359" endtime="20221122 14:29:48.447"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:35.867" endtime="20221122 14:29:48.447"/>
+</test>
+<test id="s1-t9" name="Clear all works when one of two completed" line="84">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:29:48.447" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:29:48.447" endtime="20221122 14:29:55.597"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:29:55.597" endtime="20221122 14:29:58.482"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:48.447" endtime="20221122 14:29:58.482"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:58.483" endtime="20221122 14:29:58.703"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:58.703" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:58.703" endtime="20221122 14:29:59.038"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:59.038" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:29:59.376" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:29:59.376" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:59.038" endtime="20221122 14:29:59.725"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:58.483" endtime="20221122 14:29:59.725"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:29:59.725" endtime="20221122 14:29:59.782"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:29:59.783" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:29:59.782" endtime="20221122 14:29:59.863"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:29:59.863" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:30:00.130" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:30:00.131" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:29:59.863" endtime="20221122 14:30:00.176"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:59.725" endtime="20221122 14:30:00.177"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:58.483" endtime="20221122 14:30:00.177"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>File taxes</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:00.177" level="INFO">Clicking button '//label[text()='File taxes']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:30:00.177" endtime="20221122 14:30:00.715"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:00.715" endtime="20221122 14:30:00.755"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.177" endtime="20221122 14:30:00.755"/>
+</kw>
+<kw name="WHEN The clear all items affordance is toggled">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//input[@id='toggle-all']//following-sibling::label</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:00.756" level="INFO">Clicking element '//input[@id='toggle-all']//following-sibling::label'.</msg>
+<status status="PASS" starttime="20221122 14:30:00.756" endtime="20221122 14:30:00.838"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.755" endtime="20221122 14:30:00.838"/>
+</kw>
+<kw name="THEN The item is listed as completed">
+<arg>File taxes</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:00.838" endtime="20221122 14:30:00.857"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.838" endtime="20221122 14:30:00.857"/>
+</kw>
+<kw name="AND The item is listed as completed">
+<arg>Walk the dog</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:00.857" endtime="20221122 14:30:00.864"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.857" endtime="20221122 14:30:00.864"/>
+</kw>
+<kw name="BUT Nothing listed is active">
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//ul[@class='todo-list']/li[@class='']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:30:00.865" endtime="20221122 14:30:00.872"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.865" endtime="20221122 14:30:00.872"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>0 items left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:30:00.872" endtime="20221122 14:30:00.895"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.872" endtime="20221122 14:30:00.895"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:30:00.895" endtime="20221122 14:30:00.978"/>
+</kw>
+<status status="PASS" starttime="20221122 14:29:48.447" endtime="20221122 14:30:00.979"/>
+</test>
+<test id="s1-t10" name="Clear all un-clears when two of two completed" line="93">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:30:00.979" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:30:00.979" endtime="20221122 14:30:11.065"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:30:11.065" endtime="20221122 14:30:11.200"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.979" endtime="20221122 14:30:11.200"/>
+</kw>
+<kw name="GIVEN a Todo list with items">
+<arg>File taxes</arg>
+<arg>Walk the dog</arg>
+<kw name="I add a todo for">
+<arg>${item1}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:30:11.201" endtime="20221122 14:30:11.444"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:11.444" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:30:11.444" endtime="20221122 14:30:11.764"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:30:11.764" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:30:12.132" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:30:12.132" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:30:11.764" endtime="20221122 14:30:12.462"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:11.201" endtime="20221122 14:30:12.463"/>
+</kw>
+<kw name="I add a todo for">
+<arg>${item2}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:30:12.463" endtime="20221122 14:30:12.577"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:12.577" level="INFO">Typing text 'Walk the dog' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:30:12.577" endtime="20221122 14:30:12.647"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:30:12.648" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:30:12.954" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:30:12.955" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:30:12.647" endtime="20221122 14:30:13.003"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:12.463" endtime="20221122 14:30:13.003"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:11.201" endtime="20221122 14:30:13.003"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>File taxes</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:13.004" level="INFO">Clicking button '//label[text()='File taxes']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:30:13.004" endtime="20221122 14:30:13.551"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:13.551" endtime="20221122 14:30:13.604"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:13.004" endtime="20221122 14:30:13.604"/>
+</kw>
+<kw name="AND The item is marked as complete">
+<arg>Walk the dog</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//preceding-sibling::input[@type='checkbox']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:13.605" level="INFO">Clicking button '//label[text()='Walk the dog']//preceding-sibling::input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20221122 14:30:13.604" endtime="20221122 14:30:13.665"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:13.665" endtime="20221122 14:30:13.674"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:13.604" endtime="20221122 14:30:13.674"/>
+</kw>
+<kw name="WHEN The clear all items affordance is toggled">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//input[@id='toggle-all']//following-sibling::label</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:13.674" level="INFO">Clicking element '//input[@id='toggle-all']//following-sibling::label'.</msg>
+<status status="PASS" starttime="20221122 14:30:13.674" endtime="20221122 14:30:13.995"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:13.674" endtime="20221122 14:30:13.995"/>
+</kw>
+<kw name="THEN The item is listed as active">
+<arg>File taxes</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:13.995" endtime="20221122 14:30:14.002"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:13.995" endtime="20221122 14:30:14.002"/>
+</kw>
+<kw name="AND The item is listed as active">
+<arg>Walk the dog</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, '')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:14.002" endtime="20221122 14:30:14.014"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:14.002" endtime="20221122 14:30:14.014"/>
+</kw>
+<kw name="AND The list summary is">
+<arg>2 items left</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//footer//span[contains(., '${item_left}')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221122 14:30:14.015" endtime="20221122 14:30:14.038"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:14.015" endtime="20221122 14:30:14.038"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:30:14.038" endtime="20221122 14:30:14.125"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:00.979" endtime="20221122 14:30:14.125"/>
+</test>
+<test id="s1-t11" name="Items can be straight removed" line="102">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:30:14.126" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:30:14.126" endtime="20221122 14:30:21.409"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:30:21.409" endtime="20221122 14:30:25.225"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:14.125" endtime="20221122 14:30:25.225"/>
+</kw>
+<kw name="GIVEN I add a todo for">
+<arg>File taxes</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:30:25.225" endtime="20221122 14:30:25.426"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:25.426" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:30:25.426" endtime="20221122 14:30:25.755"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:30:25.755" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:30:26.096" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:30:26.096" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:30:25.755" endtime="20221122 14:30:26.449"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:25.225" endtime="20221122 14:30:26.449"/>
+</kw>
+<kw name="WHEN The item is removed">
+<arg>File taxes</arg>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20221122 14:30:26.450" level="INFO">Simulating Mouse Over on element '//label[text()='File taxes']//ancestor::li'.</msg>
+<status status="PASS" starttime="20221122 14:30:26.450" endtime="20221122 14:30:26.786"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li//button[@class='destroy']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:26.786" level="INFO">Clicking button '//label[text()='File taxes']//ancestor::li//button[@class='destroy']'.</msg>
+<status status="PASS" starttime="20221122 14:30:26.786" endtime="20221122 14:30:27.057"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:26.450" endtime="20221122 14:30:27.057"/>
+</kw>
+<kw name="THEN Nothing is listed">
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//ul[@class='todo-list']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:30:27.057" endtime="20221122 14:30:27.067"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:27.057" endtime="20221122 14:30:27.067"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:30:27.067" endtime="20221122 14:30:27.151"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:14.125" endtime="20221122 14:30:27.151"/>
+</test>
+<test id="s1-t12" name="Initiation of editing takes away delete and complete affordances" line="107">
+<kw name="Open TodoMVC Page Using Chrome Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221122 14:30:27.152" level="INFO">Opening browser 'Chrome' to base url 'https://todomvc.com/examples/react/#/'.</msg>
+<status status="PASS" starttime="20221122 14:30:27.152" endtime="20221122 14:30:34.824"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221122 14:30:34.824" endtime="20221122 14:30:34.949"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:27.151" endtime="20221122 14:30:34.950"/>
+</kw>
+<kw name="GIVEN I add a todo for">
+<arg>File taxes</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20221122 14:30:34.950" endtime="20221122 14:30:39.702"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>${todo_item}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:39.703" level="INFO">Typing text 'File taxes' into text field '//input[@class='new-todo']'.</msg>
+<status status="PASS" starttime="20221122 14:30:39.703" endtime="20221122 14:30:40.034"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${TODO_INPUT_FIELD}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20221122 14:30:40.035" level="INFO">Sending key(s) ('RETURN',) to //input[@class='new-todo'] element.</msg>
+<msg timestamp="20221122 14:30:40.390" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20221122 14:30:40.390" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20221122 14:30:40.034" endtime="20221122 14:30:40.741"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:34.950" endtime="20221122 14:30:40.741"/>
+</kw>
+<kw name="WHEN The item is selected for edit">
+<arg>File taxes</arg>
+<kw name="Double Click Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<msg timestamp="20221122 14:30:40.742" level="INFO">Double clicking element '//label[text()='File taxes']'.</msg>
+<status status="PASS" starttime="20221122 14:30:40.741" endtime="20221122 14:30:41.308"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:40.741" endtime="20221122 14:30:41.308"/>
+</kw>
+<kw name="Then the item cannot be completed">
+<arg>File taxes</arg>
+<kw name="Wait Until Page Does Not Contain Element" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li[contains(@class, 'completed')]</arg>
+<doc>Waits until the element ``locator`` disappears from the current page.</doc>
+<status status="PASS" starttime="20221122 14:30:41.308" endtime="20221122 14:30:41.332"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:41.308" endtime="20221122 14:30:41.332"/>
+</kw>
+<kw name="And the item cannot be removed">
+<arg>File taxes</arg>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20221122 14:30:41.332" level="INFO">Simulating Mouse Over on element '//label[text()='File taxes']//ancestor::li'.</msg>
+<status status="PASS" starttime="20221122 14:30:41.332" endtime="20221122 14:30:41.614"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>//label[text()='${item}']//ancestor::li//button[@class='destroy']</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20221122 14:30:41.614" endtime="20221122 14:30:41.661"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:41.332" endtime="20221122 14:30:41.662"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221122 14:30:41.662" endtime="20221122 14:30:41.745"/>
+</kw>
+<status status="PASS" starttime="20221122 14:30:27.151" endtime="20221122 14:30:41.745"/>
+</test>
+<status status="PASS" starttime="20221122 14:28:05.602" endtime="20221122 14:30:41.746"/>
+</suite>
+<statistics>
+<total>
+<stat pass="12" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="12" fail="0" skip="0" id="s1" name="Todo">Todo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
