@@ -1,69 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.1 (Python 3.11.0 on darwin)" generated="20221122 14:40:41.686" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.1 (Python 3.11.0 on darwin)" generated="20221129 21:46:00.402" rpa="false" schemaversion="3">
 <suite id="s1" name="Login" source="/Users/s19667/Documents/pythonProjec/Test_Robot/test_case/login.robot">
-<test id="s1-t1" name="Verify Successful Login to the-internet.herokuapp" line="8">
+<test id="s1-t1" name="Verify Successful Login to OrangeHRM" line="8">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://opensource-demo.orangehrmlive.com/</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 21:46:00.563" level="INFO">Opening browser 'Chrome' to base url 'https://opensource-demo.orangehrmlive.com/'.</msg>
+<status status="PASS" starttime="20221129 21:46:00.563" endtime="20221129 21:46:24.925"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>id:txtUsername</arg>
+<arg>timeout=5</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<msg timestamp="20221129 21:46:30.262" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221129 21:46:30.262" level="FAIL">Element 'id:txtUsername' not visible after 5 seconds.</msg>
+<status status="FAIL" starttime="20221129 21:46:24.925" endtime="20221129 21:46:30.264"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:txtUsername</arg>
+<arg>Admin</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20221129 21:46:30.264" endtime="20221129 21:46:30.264"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:txtPassword</arg>
+<arg>admin123</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20221129 21:46:30.264" endtime="20221129 21:46:30.264"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:btnLogin</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20221129 21:46:30.264" endtime="20221129 21:46:30.264"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:welcome</arg>
+<arg>timeout=5</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20221129 21:46:30.264" endtime="20221129 21:46:30.264"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20221129 21:46:30.264" endtime="20221129 21:46:30.264"/>
+</kw>
+<doc>This test case verifies that user is able to successfully Login to OrangeHRM</doc>
+<tag>Smoke</tag>
+<status status="FAIL" starttime="20221129 21:46:00.562" endtime="20221129 21:46:30.264">Element 'id:txtUsername' not visible after 5 seconds.</status>
+</test>
+<test id="s1-t2" name="Verify Successful Login to the-internet.herokuapp" line="18">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>https://the-internet.herokuapp.com/login</arg>
 <arg>Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20221122 14:40:41.765" level="INFO">Opening browser 'Chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<status status="PASS" starttime="20221122 14:40:41.765" endtime="20221122 14:40:58.049"/>
+<msg timestamp="20221129 21:46:30.265" level="INFO">Opening browser 'Chrome' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<status status="PASS" starttime="20221129 21:46:30.265" endtime="20221129 21:46:42.809"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <arg>id:username</arg>
 <arg>timeout=5</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20221122 14:40:58.050" endtime="20221122 14:40:58.133"/>
+<status status="PASS" starttime="20221129 21:46:42.809" endtime="20221129 21:46:42.898"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>id:username</arg>
 <arg>tomsmith</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20221122 14:40:58.133" level="INFO">Typing text 'tomsmith' into text field 'id:username'.</msg>
-<status status="PASS" starttime="20221122 14:40:58.133" endtime="20221122 14:40:58.349"/>
+<msg timestamp="20221129 21:46:42.899" level="INFO">Typing text 'tomsmith' into text field 'id:username'.</msg>
+<status status="PASS" starttime="20221129 21:46:42.898" endtime="20221129 21:46:43.137"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
 <arg>id:password</arg>
 <arg>SuperSecretPassword!</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20221122 14:40:58.349" level="INFO">Typing password into text field 'id:password'.</msg>
-<msg timestamp="20221122 14:40:58.392" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20221122 14:40:58.451" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20221122 14:40:58.349" endtime="20221122 14:40:58.451"/>
+<msg timestamp="20221129 21:46:43.138" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg timestamp="20221129 21:46:43.189" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20221129 21:46:43.246" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20221129 21:46:43.138" endtime="20221129 21:46:43.246"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>css:button[type="submit"]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20221122 14:40:58.452" level="INFO">Clicking element 'css:button[type="submit"]'.</msg>
-<status status="PASS" starttime="20221122 14:40:58.452" endtime="20221122 14:40:59.581"/>
+<msg timestamp="20221129 21:46:43.246" level="INFO">Clicking element 'css:button[type="submit"]'.</msg>
+<status status="PASS" starttime="20221129 21:46:43.246" endtime="20221129 21:46:44.573"/>
 </kw>
 <kw name="Element Should Be Visible" library="SeleniumLibrary">
 <arg>css:[href="/logout"]</arg>
 <arg>timeout=5</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20221122 14:40:59.597" level="INFO">Element 'css:[href="/logout"]' is displayed.</msg>
-<status status="PASS" starttime="20221122 14:40:59.581" endtime="20221122 14:40:59.597"/>
+<msg timestamp="20221129 21:46:44.603" level="INFO">Element 'css:[href="/logout"]' is displayed.</msg>
+<status status="PASS" starttime="20221129 21:46:44.573" endtime="20221129 21:46:44.603"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20221122 14:40:59.597" endtime="20221122 14:40:59.680"/>
+<status status="PASS" starttime="20221129 21:46:44.603" endtime="20221129 21:46:44.689"/>
 </kw>
 <doc>This test case verifies that user is able to successfully Login to the-internet.herokuapp</doc>
 <tag>Smoke</tag>
-<status status="PASS" starttime="20221122 14:40:41.765" endtime="20221122 14:40:59.681"/>
+<status status="PASS" starttime="20221129 21:46:30.264" endtime="20221129 21:46:44.689"/>
 </test>
 <doc>Login Functionality</doc>
-<status status="PASS" starttime="20221122 14:40:41.687" endtime="20221122 14:40:59.681"/>
+<status status="FAIL" starttime="20221129 21:46:00.403" endtime="20221129 21:46:44.689"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">Smoke</stat>
+<stat pass="1" fail="1" skip="0">Smoke</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Login">Login</stat>
+<stat pass="1" fail="1" skip="0" id="s1" name="Login">Login</stat>
 </suite>
 </statistics>
 <errors>

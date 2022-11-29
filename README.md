@@ -16,9 +16,9 @@
 
 #### Bước 1: Tạo folder mới (Các bạn có thể đặt tên mà các bạn mong muốn)
 #### Bước 2: Tạo file mới có tên là search_flights.robot.
-#### Bước 3: Mở file search_flights.robot và thêm nội dung như sau:
+#### Bước 3:  Tạo file mới có tên là Search_flights_keywords.robot.
+![img_4.png](img_4.png) 
 
-![img.png](img.png)
 
 Note:
 - Thành phần cơ bản của một file kịch bản của Robot Framework gồm 3 phần chính: Settings, Test Cases và Keywords.
@@ -36,8 +36,8 @@ Note:
 
 Lưu ý: Không code theo các phần của note.
 
-#### Bước 4: Tạo file mới có tên là Search_flights_keywords.robot.
-![img_4.png](img_4.png)
+#### Bước 4:Mở file search_flights.robot và thêm nội dung như sau:
+![img.png](img.png)
 #### Bước 5: Chạy file search_flights.robot bằng cách mở terminal và gõ lệnh sau:
 ```angular2html
     robot search_flights.robot
@@ -47,11 +47,14 @@ Lưu ý: Không code theo các phần của note.
 
 #### Các file tạo ra sau khi chạy
 - log.html: Lưu lại các thông tin về các bước thực hiện của test.
-![img_6.png](img_6.png)
+
+[//]: # (![img_6.png]&#40;img_6.png&#41;)
 - output.xml: Lưu lại các thông tin về các bước thực hiện của test.
-![img_8.png](img_8.png)
+
+[//]: # (![img_8.png]&#40;img_8.png&#41;)
 - report.html: Lưu lại các thông tin về các bước thực hiện của test.
-![img_7.png](img_7.png)
+
+[//]: # (![img_7.png]&#40;img_7.png&#41;)
 
 ## Ví dụ 2
 
@@ -66,11 +69,14 @@ Lưu ý: Không code theo các phần của note.
 ![img_11.png](img_11.png)
 #### Các file tạo ra sau khi chạy
 - log.html: Lưu lại các thông tin về các bước thực hiện của test.
-![img_12.png](img_12.png)
+
+[//]: # (![img_12.png]&#40;img_12.png&#41;)
 - output.xml: Lưu lại các thông tin về các bước thực hiện của test.
-![img_13.png](img_13.png)
+
+[//]: # (![img_13.png]&#40;img_13.png&#41;)
 - report.html: Lưu lại các thông tin về các bước thực hiện của test.
-![img_14.png](img_14.png)
+
+[//]: # (![img_14.png]&#40;img_14.png&#41;)
 
 ## Ví dụ 3
 ### Tìm hiểu test login 
@@ -81,12 +87,16 @@ Lưu ý: Không code theo các phần của note.
 #### Bước 4: Mở file login.robot và thêm nội dung như sau:
 ![img_16.png](img_16.png)
 #### Bước 5: Chạy thử kết quả
-![img_17.png](img_17.png)
+
+[//]: # (![img_17.png]&#40;img_17.png&#41;)
 #### Các file tạo ra sau khi chạy
 - log.html: Lưu lại các thông tin về các bước thực hiện của test.
-![img_18.png](img_18.png)
+
+[//]: # (![img_18.png]&#40;img_18.png&#41;)
 - output.xml: Lưu lại các thông tin về các bước thực hiện của test.
-![img_19.png](img_19.png)
+
+[//]: # (![img_19.png]&#40;img_19.png&#41;)
 - report.html: Lưu lại các thông tin về các bước thực hiện của test.
-![img_20.png](img_20.png)
+
+[//]: # (![img_20.png]&#40;img_20.png&#41;)
 
