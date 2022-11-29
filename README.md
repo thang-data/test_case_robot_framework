@@ -5,12 +5,10 @@
 ### Tìm hiểu về websites đặt vé máy bay
 
 #### Bước 1: Mở link http://blazedemo.com/
-![](../../../../../var/folders/_v/wsv3gzw97k99csbw8vsdtkxh0000gp/T/TemporaryItems/NSIRD_screencaptureui_UKkKcG/Screenshot 2022-11-22 at 11.31.38.png)
 #### Bước 2: Chọn nơi khởi hành là Paris
 #### Bước 3: Chọn nơi đến là London
 #### Bước 4: Chọn Find Flights
 #### Bước 5: Xem kết quả tìm kiếm
-![](../../../../../var/folders/_v/wsv3gzw97k99csbw8vsdtkxh0000gp/T/TemporaryItems/NSIRD_screencaptureui_GHh61T/Screenshot 2022-11-22 at 11.33.46.png)
 
 ### Thay vì chúng ta phải vào link code và thực hiện mọi thứ bằng tay thì chúng ta có thể dùng Robot Framework để thực hiện việc này
 
